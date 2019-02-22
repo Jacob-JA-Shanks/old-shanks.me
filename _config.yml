@@ -4,7 +4,7 @@
 # IMPORTANT: Set the URL of your site.
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
-# url:                   https://<username>.github.io
+# url:                   https://shanks.me
 
 # IMPORTANT: Set The "base URL" of your site.
 # When your site sits in a subdirectory, set to /<name of directory>
@@ -16,40 +16,37 @@
 
 # Language of your content in 2-letter code, e.g.: en, de.
 # You may also provide a location, e.g.: en-us, de_AT.
-lang:                  en
+lang:                  en_GB
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 Hydejack Starter Kit
+title:                 Jacob JA Shanks
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
 description:           >
-  A Jekyll theme with JavaScript powers. "Best Theme by a Mile".
-  Combines the best of static sites and modern web apps.
-  Open `_config.yml` to edit this text.
+  A growing C# Developer with a keen sense of detail and efficiency
 
 # A shorter description for the sidebar.
 tagline:               >
-  Open `_config.yml` to edit this text.
+  A growing C# Developer with a keen sense of detail and efficiency
 
 # A list of keywords for your blog.
 keywords:              []
 
 # Used by jekyll-seo-tag.
-logo:                  /assets/icons/icon.png
+logo:                  /assets/icons/icon.jpg
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                <firstname> <lastname>
-  email:               <mail@domain.tld>
+  name:                Jacob JA Shanks
+  email:               jacob@shanks.me
   # Used by `jekyll-seo-tag`:
-  # twitter:             <username>
+  # twitter:             Jacob_JA_Shanks
 
 # This text will appear in a `<small>` tag in the footer of every page.
 copyright:             >
-  © 2018. All rights reserved.
-  Open `_config.yml` to edit this text.
+  © 2018 Jacob JA Shanks. All rights reserved.
 
 # Add links to the footer.
 # Typically you'll want to link to your impress, cookies or privacy policy, etc.
@@ -256,10 +253,10 @@ remote_theme: qwtel/hydejack@v8.3.0
 
 # Used on index and about sites
 # social:
-#   name:                <firstname> <lastname>
+#   name:                jacob JA Shanks
 #   links:
-#     - https://twitter.com/<username>
-#     - https://github.com/<username>
+#     - https://twitter.com/Jacob_JA_Shanks
+#     - https://github.com/Jacob-JA-Shanks
 
 
 # Other Plugins
