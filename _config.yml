@@ -39,7 +39,7 @@ logo:                  /assets/icons/icon.jpg
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name:                Jacob JA Shanks
+  name:                Jacob Shanks
   email:               jacob@shanks.me
   # Used by `jekyll-seo-tag`:
   # twitter:             Jacob_JA_Shanks
@@ -253,10 +253,10 @@ remote_theme: qwtel/hydejack@v8.3.0
 
 # Used on index and about sites
 # social:
-#   name:                jacob JA Shanks
+#   name:                <firstname> <lastname>
 #   links:
-#     - https://twitter.com/Jacob_JA_Shanks
-#     - https://github.com/Jacob-JA-Shanks
+#     - https://twitter.com/<username>
+#     - https://github.com/<username>
 
 
 # Other Plugins
