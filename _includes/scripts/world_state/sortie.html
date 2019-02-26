@@ -1,0 +1,46 @@
+<script>
+    const app = document.getElementsByClassName('page').item(0);
+    var expiryDate = Date();
+    console.log("Beep");
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://ws.warframestat.us/pc/sortie', true)
+    request.onload = function () {
+        var data = JSON.parse(this.response);
+        if (request.status >= 200  && request.status < 400) {
+
+            const sortieName = document.getElementsByClassName('message').item(0);
+            sortieName.textContent = `Boss: ${data.boss}`;
+
+            const sortieTimeRemaining = document.getElementById('timeRemaining');
+            expiryDate = Date.parse(data.expiry);
+            var now = new Date().getTime();
+            var distance = expiryDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+            sortieTimeRemaining.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+            var inst = setInterval(countdown, 1000);
+
+        }
+    }
+
+    function countdown() {
+        const timeToUpdate = document.getElementById('timeRemaining');
+        if (timeToUpdate == null) clearInterval(inst);
+
+        var now = new Date().getTime();
+        var distance = expiryDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+        timeToUpdate.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+    }
+
+    request.send();
+</script>

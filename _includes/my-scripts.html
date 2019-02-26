@@ -1,0 +1,167 @@
+<!--
+Example code for the CloudFlare mail protection script.
+CloudFlare will inject this on every page, but due to Hydejack's push state approach to page loading,
+it will only run on the initial page.
+The snippet below will run the code on every `hy-push-state-load` event instead.
+-->
+<script>
+  // document.getElementsByTagName('hy-push-state')[0].addEventListener('hy-push-state-load', function (e) {
+  //   function e(e){
+  //     console.log("Biip");
+  //     (console.error?console.error:console.log).call(console,e)
+  //   }
+
+  //   function t(e){
+  //     console.log("Berp");
+  //     return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+  //   }
+
+  //   function r(e,t){
+  //     console.log("Buup");
+  //     var r=e.substr(t,2);return parseInt(r,16)
+  //   }
+
+  //   function n(e,n){
+  //     console.log("Baap");
+  //     for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+  //       var l=r(e,a)^c;
+  //       o+=String.fromCharCode(l)
+  //     }
+  //     return t(o)
+  //   }
+
+  //   var o="/cdn-cgi/l/email-protection#",
+  //       c=".__cf_email__",
+  //       a="data-cfemail",
+  //       l=document.createElement("div");
+
+  //   !function(){
+  //     console.log("Beep");
+  //     for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+  //       try{
+  //         var c=t[r],a=c.href.indexOf(o);
+  //         a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+  //       }catch(t){
+  //         e(t)
+  //       }
+  //   }(),
+  //   function(){
+  //     console.log("Boop");
+  //     for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+  //       try{
+  //         var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+  //         o.parentNode.replaceChild(i,o)
+  //       }catch(t){
+  //         e(t)
+  //       }
+  //   }()
+  // });
+  document.getElementsByTagName('hy-push-state')[0].addEventListener('hy-push-state-after', function () {
+    var articleCheck = document.getElementById('sortieStatus');
+    var alertCheck = document.getElementById('alertStatus');
+    var instA = 0;
+    if (articleCheck != null) {
+      console.log("PBoop");
+      var request = new XMLHttpRequest();
+      request.open('GET', 'https://ws.warframestat.us/pc/sortie', true)
+      request.onload = function () {
+        var data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+
+          const sortieName = document.getElementsByClassName('message').item(0);
+          sortieName.textContent = `Boss: ${data.boss}`;
+
+          const sortieTimeRemaining = document.getElementById('timeRemaining');
+          expiryDate = Date.parse(data.expiry);
+          var now = new Date().getTime();
+          var distance = expiryDate - now;
+
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+          sortieTimeRemaining.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+          var instS = setInterval(countdownS, 1000);
+
+        }
+      }
+
+      function countdownS() {
+        const timeToUpdate = document.getElementById('timeRemaining');
+        if (timeToUpdate == null) clearInterval(instS);
+
+        var now = new Date().getTime();
+        var distance = expiryDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+        timeToUpdate.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+      }
+
+      request.send();
+    }
+
+    if (alertCheck != null) {
+      console.log("PBeep");
+      var expiryDate = Date();
+      var request = new XMLHttpRequest();
+      request.open('GET', 'https://ws.warframestat.us/pc/alerts', true)
+      request.onload = function () {
+        var data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+          data.forEach(alert => {
+            const alertBox = document.createElement('p');
+            alertBox.setAttribute('class', 'message');
+            alertBox.setAttribute('style', 'white-space: pre;')
+            alertBox.textContent = `Mission: ${alert.mission.type}\r\nNode: ${alert.mission.node}\r\nEnemy Levels: ${alert.mission.minEnemyLevel} - ${alert.mission.maxEnemyLevel}`;
+
+            const alertExpire = document.createElement('p');
+            alertExpire.setAttribute('class', 'message timeRemaining');
+            alertExpire.setAttribute('expiry', alert.expiry);
+
+            expiryDate = Date.parse(alert.expiry);
+            var now = new Date().getTime();
+            var distance = expiryDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+            alertExpire.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+            alertExpire.setAttribute('style', 'margin-bottom: 3rem');
+            alertCheck.appendChild(alertBox);
+            alertCheck.appendChild(alertExpire);
+          });
+          instA = setInterval(countdownA, 1000);
+        }
+      }
+
+      function countdownA() {
+        const timesToUpdate = document.getElementsByClassName('timeRemaining');
+        console.log(timesToUpdate.length);
+        if (timesToUpdate.length == 0) clearInterval(instA);
+
+        [].forEach.call(timesToUpdate, function(time) {
+          const expiry = Date.parse(time.getAttribute('expiry'));
+
+          var now = new Date().getTime();
+          var distance = expiry - now;
+
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+          time.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+        })
+      }
+
+      request.send();
+    }
+  });
+</script>

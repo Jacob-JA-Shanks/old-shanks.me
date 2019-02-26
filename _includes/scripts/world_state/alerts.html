@@ -1,0 +1,60 @@
+<script>
+    const app = document.getElementsByClassName('page').item(0);
+    var inst = 0;
+    var expiryDate = Date();
+    console.log("LBeep");
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://ws.warframestat.us/pc/alerts', true)
+    request.onload = function () {
+        var data = JSON.parse(this.response);
+        if (request.status >= 200  && request.status < 400) {
+            data.forEach(alert => {
+                const alertBox = document.createElement('p');
+                alertBox.setAttribute('class', 'message');
+                alertBox.setAttribute('style', 'white-space: pre;')
+                alertBox.textContent = `Mission: ${alert.mission.type}\r\nNode: ${alert.mission.node}\r\nEnemy Levels: ${alert.mission.minEnemyLevel} - ${alert.mission.maxEnemyLevel}`;
+                
+                const alertExpire = document.createElement('p');
+                alertExpire.setAttribute('class', 'message timeRemaining');
+                alertExpire.setAttribute('expiry', alert.expiry);
+                
+                expiryDate = Date.parse(alert.expiry);
+                var now = new Date().getTime();
+                var distance = expiryDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+                alertExpire.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+                alertExpire.setAttribute('style', 'margin-bottom: 3rem');
+                app.appendChild(alertBox);
+                app.appendChild(alertExpire);
+            });
+            inst = setInterval(countdown, 1000);
+        }
+    }
+
+    function countdown() {
+        const timesToUpdate = document.getElementsByClassName('timeRemaining');
+        console.log(timesToUpdate.length);
+        if (timesToUpdate.length == 0) clearInterval(inst);
+        
+        [].forEach.call(timesToUpdate, function(time) {
+            const expiry = Date.parse(time.getAttribute('expiry'));
+
+            var now = new Date().getTime();
+            var distance = expiry - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString() + "d";
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString() + "h";
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString() + "m";
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000).toString() + "s";
+
+            time.textContent = `Time Remaining: ${days == "0d" ? '' : days} ${hours == "0h" && days == "0h" ? '' : hours} ${minutes == "0m" && hours == "0h" ? '' : minutes} ${seconds == "0s" && minutes == "0m" ? 'None' : seconds}`;
+        })
+    }
+
+    request.send();
+</script>

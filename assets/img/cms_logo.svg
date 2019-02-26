@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 4000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g id="FD" transform="matrix(1.57536,0,0,1.57536,-977.347,-310.753)">
+        <g id="D" transform="matrix(0.634775,0,0,0.634775,642.708,169.484)">
+            <path d="M733.126,393.151L648.743,147.854L758.536,147.854L917.088,636.657L917.081,636.662L917.088,636.687L904.717,645.675L836.981,695.051L836.936,694.921L500.09,939.655L498.344,938.383L498.259,938.444L413.372,876.535L410.848,874.698L410.851,874.696L192.472,715.428L225.31,607.566L501.461,810.165L802.764,595.584L768.962,497.325L551.743,497.325L520.082,393.216L733.126,393.151Z" style="fill:rgb(196,198,210);"/>
+        </g>
+        <g id="F" transform="matrix(0.634775,-3.52371e-17,3.52371e-17,0.634775,642.708,169.484)">
+            <path d="M348.151,147.854L633.218,147.854L668.859,252.069L316.423,252.069M273.459,393.192L504.51,393.122L536.189,497.33L241.755,497.33L178.193,706.107L82.61,636.903L127.938,497.33L161.746,393.226C161.746,393.226 241.433,147.854 241.433,147.854L348.151,147.854L273.459,393.192Z" style="fill:rgb(196,198,210);"/>
+        </g>
+    </g>
+    <g transform="matrix(8.03613,0,0,8.03613,-9768.17,-3806.9)">
+        <text x="1356.53px" y="553.267px" style="font-family:'FiraCode-Bold', 'Fira Code', monospace;font-weight:700;font-size:50px;fill:rgb(196,198,210);">ADMIN PANEL</text>
+    </g>
+</svg>

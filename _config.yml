@@ -4,7 +4,7 @@
 # IMPORTANT: Set the URL of your site.
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
-# url:                   https://shanks.me
+url:                   https://shanks.me/
 
 # IMPORTANT: Set The "base URL" of your site.
 # When your site sits in a subdirectory, set to /<name of directory>
@@ -12,7 +12,7 @@
 # Use the empty string '' otherwise.
 # For GitHub project sites, this is usually the name of the project,
 # e.g. `/hydejack`.
-# baseurl:               ''
+baseurl:               ''
 
 # Language of your content in 2-letter code, e.g.: en, de.
 # You may also provide a location, e.g.: en-us, de_AT.
@@ -30,23 +30,24 @@ description:           >
 tagline:               >
   A growing C# Developer with a keen sense of detail and efficiency
 
-# A list of keywords for your blog.
+# A list of keywords for your blog
 keywords:              []
 
-# Used by jekyll-seo-tag.
-logo:                  /assets/icons/icon.jpg
+# A (square) logo for your site.
+# If provided, it will be shown at the top of the sidebar.
+# It also used by the `jekyll-seo-tag` plugin.
+logo:                  /assets/img/profilepicture.jpg
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
-  # Used by `jekyll-feed`:
-  name:                Jacob Shanks
+  name:                Jacob JA Shanks
   email:               jacob@shanks.me
   # Used by `jekyll-seo-tag`:
-  # twitter:             Jacob_JA_Shanks
+  # twitter:             <username>
 
 # This text will appear in a `<small>` tag in the footer of every page.
 copyright:             >
-  © 2018 Jacob JA Shanks. All rights reserved.
+  © 2019 Jacob JA Shanks. All rights reserved.
 
 # Add links to the footer.
 # Typically you'll want to link to your impress, cookies or privacy policy, etc.
@@ -68,8 +69,8 @@ paginate_path:         /page-:num/
 # ========================================================================================
 
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg.jpg
-accent_color:          rgb(79,177,186)
+accent_image:          https://res.cloudinary.com/flashdeviant/image/upload/q_auto/v1549917008/General%20Assets/Bokeh_Flat.png
+accent_color:          rgb(255,208,10)
 
 # This is used for the `theme-color` meta tag,
 # which changes the background color of the browser UI in certain browsers.
@@ -120,9 +121,7 @@ defaults:
 # disqus:                <disqus_shortname>
 
 # Setting a tinyletter username will enable the newsletter subscription box.
-# PRO version only!
 # tinyletter:            <tinyletter_username>
-
 
 # Hydejack Settings
 # ----------------------------------------------------------------------------------------
@@ -173,11 +172,26 @@ hydejack:
   # When enabled, no user-related data will be stored until the user gives consent.
   cookies_banner:      false
 
+  # Set to `true` if you would like to add a "Powered by Hydejack" link in the footer.
+  advertise:           false
+
+  # Note that dark mode only works in the PRO version of Hydejack.
+  dark_mode:
+    # Set to `true` to always use the dark theme.
+    always:            true
+
+    # Set to `true` to use the dark theme based on visitors' local time.
+    dynamic:           true
+    sunrise:           6
+    sunset:            18
+
+    # Set to `true` to allow visitors to switch between light and dark mode.
+    icon:              true
+
   # ⚡️ DANGER ZONE ⚡️
   # ----------------
   # This is an _experimental_ feature.
   # Only use if you know what Service Workers are and how they can impact your site!
-  # Coding skills highly recommended.
   offline:
     enabled:           false
     cache_version:     1
@@ -206,9 +220,21 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - webpack.config.js
+  - "*.gemspec"
+  - _js
+  - _plugins
+  - .sass-cache
+include:
+  - LICENSE.md
+  - '_pages'
+  - '_redirects'
 
 
-# Plugins and Plugin Configuration
+# Plugins
 # ========================================================================================
 
 plugins:
@@ -222,12 +248,14 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-titles-from-headings
+  - premonition
+  - jemoji
 
 # Theme
 # ---------------------------------------------------------------------------------------
 
-remote_theme: qwtel/hydejack@v8.3.0
-
+# theme: jekyll-theme-hydejack
+# remote_theme: qwtel/hydejack@gem
 
 # SEO Tag
 # ---------------------------------------------------------------------------------------
@@ -243,7 +271,7 @@ remote_theme: qwtel/hydejack@v8.3.0
 
 # Used for Twitter cards
 # twitter:
-#   username:            <twitter handle>
+#   username:            <shortname>
 
 # Used for Facebook open graph
 # facebook:
@@ -284,9 +312,11 @@ kramdown:
     preview_as_code:   true
 
 compress_html:
-  comments:            ['<!-- ', ' -->']
+  comments:            ["<!-- ", " -->"]
   clippings:           all
   endings:             all
+  ignore:
+    envs:              [development]
 
 sass:
   style:               compressed

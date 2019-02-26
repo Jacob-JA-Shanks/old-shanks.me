@@ -1,0 +1,40 @@
+{% if plugins contains 'jekyll-feed' %}{% include head/feed-tag.html %}{% endif %}
+
+{% assign lang = page.lang | default:site.lang | default:'en' %}
+<link rel="alternate" href="{{ page.url | absolute_url }}" hreflang="{{ lang | downcase | replace:'_','-' }}">
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/icons/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/icons/favicon-16x16.png' | relative_url }}">
+<link rel="mask-icon" href="{{ '/assets/icons/safari-pinned-tab.svg' | relative_url }}" color="#e7bb00">
+<link rel="shortcut icon" href="{{ '/assets/icons/favicon.ico' | relative_url }}">
+<meta name="msapplication-TileColor" content="#ffd00a">
+<meta name="msapplication-TileImage" content="{{ '/assets/icons/mstile-144x144.png' | relative_url }}">
+<meta name="msapplication-config" content="{{ '/assets/icons/browserconfig.xml' | relative_url }}">
+<meta name="theme-color" content="#35383d">
+
+<link rel="manifest" href="{{ '/assets/manifest.json' | relative_url }}">
+
+{% unless site.hydejack.no_google_fonts or site.no_google_fonts %}
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+{% endunless %}
+{% if site.google_analytics %}
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+{% endif %}
+
+{% comment %}<!--
+  This is to avoid hard-coding URLs in JS (where they can't be discovered by automated tools).
+-->{% endcomment %}
+<link rel="dns-prefetch" href="{{ '/'                                                                       | relative_url }}" id="_baseURL">
+<link rel="dns-prefetch" href="{{ '/assets/js/hydejack-8.1.1.js'                                     | relative_url }}" id="_hrefJS">
+<link rel="dns-prefetch" href="{{ '/sw.js'                                                                  | relative_url }}" id="_hrefSW">
+<link rel="dns-prefetch" href="{{ '/assets/bower_components/fontfaceobserver/fontfaceobserver.standalone.js'| relative_url }}" id="_hrefFFO">
+<link rel="dns-prefetch" href="{{ '/assets/bower_components/katex/dist/katex.min.js'                        | relative_url }}" id="_hrefKatexJS">
+<link rel="dns-prefetch" href="{{ '/assets/bower_components/katex/dist/katex.min.css'                       | relative_url }}" id="_hrefKatexCSS">
+<link rel="dns-prefetch" href="{{ '/assets/img/swipe.svg'                                                   | relative_url }}" id="_hrefSwipeSVG">
+
+{% assign disqus = site.disqus | default:site.disqus_shortname %}
+{% if disqus %}
+<link rel="dns-prefetch" href="https://{{ disqus }}.disqus.com" id="_hrefDisqus">
+{% endif %}
