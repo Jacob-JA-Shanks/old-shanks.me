@@ -69,7 +69,7 @@ paginate_path:         /page-:num/
 # ========================================================================================
 
 # Sidebar image and theme color of the site.
-accent_image:          https://res.cloudinary.com/flashdeviant/image/upload/q_auto/v1549917008/General%20Assets/Bokeh_Flat.png
+accent_image:          
 accent_color:          rgb(255,208,10)
 
 # This is used for the `theme-color` meta tag,

@@ -2,6 +2,7 @@
 menu: true
 order: 4
 image: /assets/img/blog/hydejack-8.png
+accent_image: https://res.cloudinary.com/flashdeviant/image/upload/q_auto/v1549917034/Warframe/Headers/plague_star_sidebar.png
 permalink: '/about/'
 ---
 

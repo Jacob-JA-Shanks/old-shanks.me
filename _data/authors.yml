@@ -22,11 +22,11 @@ author1:
   # Comment/uncommet to show/hide
   # Rearrange to change the order in which they appear
   social:
-    twitter:          flash_deviant
-    github:           FlashDeviant
-    gitlab:           FlashDeviant
-    email:            flash_deviant@outlook.com
-    telegram:         flashdeviant
+    twitter:          jacob_ja_shanks
+    github:           Jacob-JA-Shanks
+    gitlab:           Jacob-JA-Shanks
+    email:            jacob@shanks.me
+    # telegram:         
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
     # google:          <number>
@@ -45,17 +45,17 @@ author1:
     # deviantart:      <username>
     # ello:            <username>
     # twitch:          <username>
-    steam:            flashdeviant
+    # steam:            
     # reddit:          <username>
     # tumblr:          <username>
     # pinterest:       <username>
     # foursquare:      <number>
     # yelp:            <string>
-    # stackoverflow:   <number/username>
+    stackoverflow:   11011770/jacob-ja-shanks
     # npm:             <username>
     # hackernews:      <username>
     # trello:          <firstnamelastname>
-    # linkedin:        <firstname-lastname-string>
+    linkedin:        jacob-shanks
     # xing:            <firstname_lastname_counter>
     # blogger:         <number>
     # delicious:       <username>
