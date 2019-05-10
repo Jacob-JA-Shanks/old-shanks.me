@@ -1,6 +1,5 @@
 ---
 title: GitLab
 permalink: '/gitlab/'
-redirect_from: /gitlab
-redirect_to: https://gitlab.com/FlashDeviant
+redirect_to: https://gitlab.com/Jacob-JA-Shanks
 ---
