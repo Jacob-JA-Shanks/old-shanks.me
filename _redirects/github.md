@@ -1,6 +1,5 @@
 ---
 title: GitHub
 permalink: '/github/'
-redirect_from: /github
-redirect_to: https://github.com/FlashDeviant
+redirect_to: https://github.com/Jacob-JA-Shanks
 ---
