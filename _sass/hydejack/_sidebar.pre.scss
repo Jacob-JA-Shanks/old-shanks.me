@@ -73,7 +73,7 @@ hy-drawer {
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, .75);
-  text-align: center;
+  //text-align: center;
   z-index: 2;
   min-height: 100vh;
   // >>>
@@ -123,6 +123,7 @@ hy-drawer.loaded .sidebar {
   position: relative;
   z-index: 3;
   max-width: $sidebar-width;
+  text-align: center;
   padding: 1.5rem;
   contain: content;
 }
