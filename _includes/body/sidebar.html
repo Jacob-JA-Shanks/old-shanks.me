@@ -10,9 +10,9 @@
       {% capture bg_style %}style="background:{{ image.background }}"{% endcapture %}
       {% capture bg_class %}class="sidebar-bg {% if image.overlay %}sidebar-overlay{% endif %}"{% endcapture %}
     {% else %}
-      {% assign bg_color = "black" %}
+      {% assign bg_color = "aliceblue" %}
       {% capture bg_style %}style="background-color:{{bg_color}};"{% endcapture %}
-      {% capture bg_class %}id="particles-js sidebar-bg sidebar-overlay"{% endcapture %}
+      {% capture bg_class %}id="particles-js"{% endcapture %}
     {% endif %}
     <div {{bg_class}} {{bg_style}}></div>
 
