@@ -14,7 +14,7 @@
       {% capture prtcl_style %}style="background-color:{{prtcl_color}};"{% endcapture %}
       {% capture prtcl_class %}id="particles-js"{% endcapture %}
       {% assign bg_color = "black" %}
-      {% capture bg_style %}style="background-color:{{bg_color}};"{% endcapture %}
+      {% capture bg_style %}style="background-color:{{bg_color}};position: absolute;width: 100%;height: 100%;"{% endcapture %}
       {% capture bg_class %}id="sidebar-bg sidebar-overlay"{% endcapture %}
     {% endif %}
     <div {{bg_class}} {{bg_style}}>
