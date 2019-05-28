@@ -10,11 +10,16 @@
       {% capture bg_style %}style="background:{{ image.background }}"{% endcapture %}
       {% capture bg_class %}class="sidebar-bg {% if image.overlay %}sidebar-overlay{% endif %}"{% endcapture %}
     {% else %}
-      {% assign bg_color = "aliceblue" %}
+      {% assign prtcl_color = "black" %}
+      {% capture prtcl_style %}style="background-color:{{prtcl_color}};"{% endcapture %}
+      {% capture prtcl_class %}id="particles-js"{% endcapture %}
+      {% assign bg_color = "black" %}
       {% capture bg_style %}style="background-color:{{bg_color}};"{% endcapture %}
-      {% capture bg_class %}id="particles-js"{% endcapture %}
+      {% capture bg_class %}id="sidebar-bg sidebar-overlay"{% endcapture %}
     {% endif %}
-    <div {{bg_class}} {{bg_style}}></div>
+    <div {{bg_class}} {{bg_style}}>
+      <div {{prtcl_class}} {{prtcl_style}}></div>
+    </div>
 
     <div class="sidebar-sticky">
       <div class="sidebar-about">
