@@ -126,6 +126,9 @@ hy-drawer.loaded .sidebar {
   text-align: center;
   padding: 1.5rem;
   contain: content;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 90px;
+  box-shadow: 0px 0px 90px 50px rgba(0, 0, 0, 0.7);
 }
 
 .sidebar-about {
