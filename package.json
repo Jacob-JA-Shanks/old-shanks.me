@@ -42,7 +42,7 @@
   "dependencies": {
     "@webcomponents/webcomponentsjs": "2.0.4",
     "core-js": "^3.3.5",
-    "elem-dataset": "^1.1.1",
+    "elem-dataset": "^2.0.0",
     "hy-drawer": "^1.0.0-stencil.0",
     "hy-img": "^1.0.0-stencil.0",
     "hy-push-state": "^1.0.0-pre.25",
