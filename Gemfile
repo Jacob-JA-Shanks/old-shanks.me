@@ -27,7 +27,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-titles-from-headings"
   gem "jekyll-algolia"
-  gem "premonition", "~> 2.0.0"
+  gem "premonition", "~> 2.0.1"
   gem "jemoji"
   gem "activesupport", ">= 4.1.11"
 end
